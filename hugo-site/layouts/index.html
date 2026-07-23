@@ -1,35 +1,24 @@
 {{ define "main" }}
-<section class="hero wrap">
+<section class="hero wrap" id="bio">
   <img class="portrait" src="{{ "images/nikolaus-wolf.jpg" | relURL }}" alt="Portrait of Nikolaus Wolf">
-  <div>
-    <p class="eyebrow">Economics · Economic History</p>
-    <h1>Nikolaus Wolf</h1>
-    <p class="role">Professor of Economics and Economic History<br>Humboldt-Universität zu Berlin</p>
-    <p class="lede">Nikolaus Wolf studies the economic development of Europe, international trade, and economic geography. His work connects historical evidence with questions about borders, integration, regional inequality, and state formation.</p>
-    <div class="actions">
-      <a class="button" href="{{ "publication/" | relURL }}">View writings</a>
-      <a class="text-action" href="{{ "files/nikolaus-wolf-cv.pdf" | relURL }}">Download C.V.</a>
-    </div>
-  </div>
+  <div><p class="eyebrow">Economics · Economic History</p><h1>Nikolaus Wolf</h1><p class="role">Professor of Economics and Economic History<br>Humboldt-Universität zu Berlin</p><p class="lede">Nikolaus Wolf studies the economic development of Europe, international trade, and economic geography. His work connects historical evidence with questions about borders, integration, regional inequality, and state formation.</p><div class="actions"><a class="button" href="#writings">View writings</a><a class="text-action" href="{{ "files/nikolaus-wolf-cv.pdf" | relURL }}">Download C.V.</a></div></div>
 </section>
-<section id="research-areas" class="section wrap">
-  <p class="eyebrow">Research</p>
-  <h2>Research areas</h2>
-  <div class="accordion">
-    <details open><summary>Economic History</summary><p>Long-run European development, state formation, national identity, inequality, and the economic consequences of political borders.</p><a href="{{ "publication/#articles" | relURL }}">Selected articles →</a></details>
-    <details><summary>International Trade</summary><p>Trade integration and fragmentation, customs unions, currency areas, protectionism, and Germany’s foreign trade since the nineteenth century.</p><a href="{{ "publication/#working-papers" | relURL }}">Current work →</a></details>
-    <details><summary>Economic Geography</summary><p>Regional growth, spatial inequality, market access, density, infrastructure, and the persistent effects of divided places.</p><a href="{{ "publication/" | relURL }}">Explore writings →</a></details>
-  </div>
-</section>
-<section class="section band">
-  <div class="wrap feature-grid">
-    <div><p class="eyebrow">Current work</p><h2>Working paper</h2></div>
-    <article><h3>Suez</h3><p>With David Jacks and Chris C. Meissner. NBER Working Paper 33250; CEPR Discussion Paper 19758.</p></article>
-    <article><h3>Regional GDP data</h3><p>The Rosés–Wolf database on regional GDP, version 7 (2025), supports comparative research on European regional development.</p></article>
-  </div>
-</section>
-{{ if site.Params.mysite.discovery }}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nikolaus Wolf","jobTitle":"Professor of Economics and Economic History","affiliation":{"@type":"Organization","name":"Humboldt-Universität zu Berlin"},"url":"https://nikowolf01.github.io/nikolauswolf/"}</script>
+<section id="research" class="section wrap"><p class="eyebrow">Research</p><h2>Research areas</h2><div class="accordion">
+  <details open><summary>Economic History</summary><p>Long-run European development, state formation, national identity, inequality, and the economic consequences of political borders.</p><a href="#writings">Selected writings →</a></details>
+  <details><summary>International Trade</summary><p>Trade integration and fragmentation, customs unions, currency areas, protectionism, and Germany’s foreign trade since the nineteenth century.</p><a href="#writings">Selected writings →</a></details>
+  <details><summary>Economic Geography</summary><p>Regional growth, spatial inequality, market access, density, infrastructure, and the persistent effects of divided places.</p><a href="#writings">Selected writings →</a></details>
+</div></section>
+<section class="progress-section" id="progress"><div class="wrap"><p class="eyebrow">Work in progress</p><div class="progress-card"><figure><img src="{{ "images/figures/suez-figure-2.jpg" | relURL }}" alt="Event-study estimates of the impact of the Suez Canal opening on bilateral trade"><figcaption>Figure 2: Event Study on Suez's Opening, 1860 to 1900</figcaption></figure><div><p class="data-version">Working paper</p><h2>Suez</h2><p>With David S. Jacks and Christopher M. Meissner. NBER Working Paper 33250; CEPR Discussion Paper 19758.</p><a href="https://doi.org/10.2139/ssrn.5069363">Working-paper record →</a></div></div></div></section>
+{{ $publications := site.GetPage "/publication" }}
+<section class="writings-section" id="writings"><div class="wrap">
+  <div class="writing-head"><div><p class="eyebrow">ORCID record</p><h2>Writings</h2><p>Articles, books, chapters, and other research from Nikolaus Wolf's ORCID profile.</p></div><label>Search writings<input id="home-pub-search" type="search" placeholder="Title, author, or journal"></label></div>
+  <nav class="home-tabs" role="tablist" aria-label="Filter writings"><button class="home-tab active" data-tab="all">All</button><button class="home-tab" data-tab="articles">Articles</button><button class="home-tab" data-tab="book">Books & chapters</button><button class="home-tab" data-tab="working-papers">Other research</button></nav>
+  <p class="home-count" aria-live="polite"></p>
+  <div class="home-work-list">{{ range $publications.Pages.ByDate.Reverse }}{{ $caption := .Params.figure_caption }}<article class="home-work{{ if .Params.featured_image }} recent-pub{{ end }}" data-tab="{{ .Params.tab }}" data-search="{{ lower (printf "%s %s %s" .Title (delimit .Params.authors " ") .Params.publication) }}">{{ with .Params.featured_image }}<figure><img src="{{ . | relURL }}" alt=""><figcaption>{{ $caption }}</figcaption></figure>{{ end }}<p><span class="authors">{{ delimit .Params.authors ", " }}</span> ({{ .Date.Format "2006" }}). <a href="{{ .RelPermalink }}">{{ .Title }}</a>. <em>{{ .Params.publication }}</em></p></article>{{ end }}</div>
+</div></section>
+<section class="data-section wrap" id="data"><div><p class="eyebrow">Data</p><h2>European regional development</h2></div><article><p class="data-version">Version 7 · 2025</p><h3>Rosés–Wolf database on regional GDP</h3><p>Regional GDP, population, area, and sector-level employment data for European NUTS-2 regions, covering 1900–2022.</p><a class="button" href="https://cepr.org/node/424487">Access data and documentation</a></article></section>
+<script>
+(function(){var tabs=[].slice.call(document.querySelectorAll('.home-tab')),items=[].slice.call(document.querySelectorAll('.home-work')),input=document.querySelector('#home-pub-search'),count=document.querySelector('.home-count'),active='all';function run(){var term=input.value.toLowerCase(),visible=0;items.forEach(function(item){var show=(active==='all'||item.dataset.tab===active)&&(!term||item.dataset.search.indexOf(term)>-1);item.hidden=!show;if(show)visible++});count.textContent=visible+' of '+items.length+' works';tabs.forEach(function(tab){var on=tab.dataset.tab===active;tab.classList.toggle('active',on);tab.setAttribute('aria-selected',String(on))})}tabs.forEach(function(tab){tab.addEventListener('click',function(){active=tab.dataset.tab;run()})});input.addEventListener('input',run);run()})();
+</script>
+{{ if site.Params.mysite.discovery }}<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nikolaus Wolf","jobTitle":"Professor of Economics and Economic History","affiliation":{"@type":"Organization","name":"Humboldt-Universität zu Berlin"},"url":"https://nikowolf01.github.io/nikolauswolf/"}</script>{{ end }}
 {{ end }}
-{{ end }}
-
