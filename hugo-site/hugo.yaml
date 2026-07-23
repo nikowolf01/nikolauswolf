@@ -1,0 +1,26 @@
+baseURL: "https://nikowolf01.github.io/nikolauswolf/"
+title: "Nikolaus Wolf"
+languageCode: en-us
+enableRobotsTXT: true
+params:
+  description: "Nikolaus Wolf, Professor of Economics and Economic History at Humboldt-Universität zu Berlin."
+  mysite:
+    credit: false
+    discovery: true
+menu:
+  main:
+    - {name: "Bio & C.V.", url: "bio/", weight: 10}
+    - {name: "Writings", url: "publication/", weight: 20}
+    - {name: "Work in Progress", url: "work-in-progress/", weight: 30}
+    - {name: "Research Areas", url: "#research-areas", weight: 40}
+    - {name: "Data", url: "data/", weight: 50}
+    - {name: "People", url: "authors/", weight: 60}
+    - {name: "Teaching", url: "teaching/", weight: 70}
+    - {name: "Contact", url: "contact/", weight: 80}
+taxonomies:
+  tag: tags
+  category: categories
+permalinks:
+  publication: "/publication/:slug/"
+outputs:
+  home: [HTML, RSS]

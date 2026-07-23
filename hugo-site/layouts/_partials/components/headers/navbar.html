@@ -1,0 +1,14 @@
+<header class="site-header">
+  <nav class="navbar wrap" aria-label="Main navigation">
+    <a class="brand" href="{{ "" | relURL }}">NIKOLAUS WOLF</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+    <div id="site-menu" class="nav-links">
+      {{ range site.Menus.main }}<a href="{{ .URL | relURL }}">{{ .Name }}</a>{{ end }}
+      <button class="search-button" type="button" aria-label="Search" title="Search">⌕</button>
+    </div>
+  </nav>
+</header>
+<script>
+(function(){var b=document.querySelector('.menu-toggle'),m=document.querySelector('#site-menu');if(!b)return;b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));m.classList.toggle('open',!o);});})();
+</script>
+

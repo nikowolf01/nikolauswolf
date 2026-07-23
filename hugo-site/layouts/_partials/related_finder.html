@@ -1,0 +1,2 @@
+{{ $current := . }}{{ $related := where (where site.RegularPages "Section" "publication") "Permalink" "ne" .Permalink }}{{ $matches := slice }}{{ range $related }}{{ if gt (len (intersect (.Params.tags | default slice) ($current.Params.tags | default slice))) 0 }}{{ $matches = $matches | append . }}{{ end }}{{ end }}{{ if $matches }}<aside class="gk-see-also"><h2>See also</h2>{{ range first 4 $matches }}<p><span>[Paper]</span> <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}</aside>{{ end }}
+

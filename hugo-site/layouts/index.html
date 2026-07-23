@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="hero wrap">
+  <img class="portrait" src="{{ "images/nikolaus-wolf.jpg" | relURL }}" alt="Portrait of Nikolaus Wolf">
+  <div>
+    <p class="eyebrow">Economics · Economic History</p>
+    <h1>Nikolaus Wolf</h1>
+    <p class="role">Professor of Economics and Economic History<br>Humboldt-Universität zu Berlin</p>
+    <p class="lede">Nikolaus Wolf studies the economic development of Europe, international trade, and economic geography. His work connects historical evidence with questions about borders, integration, regional inequality, and state formation.</p>
+    <div class="actions">
+      <a class="button" href="{{ "publication/" | relURL }}">View writings</a>
+      <a class="text-action" href="{{ "files/nikolaus-wolf-cv.pdf" | relURL }}">Download C.V.</a>
+    </div>
+  </div>
+</section>
+<section id="research-areas" class="section wrap">
+  <p class="eyebrow">Research</p>
+  <h2>Research areas</h2>
+  <div class="accordion">
+    <details open><summary>Economic History</summary><p>Long-run European development, state formation, national identity, inequality, and the economic consequences of political borders.</p><a href="{{ "publication/#articles" | relURL }}">Selected articles →</a></details>
+    <details><summary>International Trade</summary><p>Trade integration and fragmentation, customs unions, currency areas, protectionism, and Germany’s foreign trade since the nineteenth century.</p><a href="{{ "publication/#working-papers" | relURL }}">Current work →</a></details>
+    <details><summary>Economic Geography</summary><p>Regional growth, spatial inequality, market access, density, infrastructure, and the persistent effects of divided places.</p><a href="{{ "publication/" | relURL }}">Explore writings →</a></details>
+  </div>
+</section>
+<section class="section band">
+  <div class="wrap feature-grid">
+    <div><p class="eyebrow">Current work</p><h2>Working paper</h2></div>
+    <article><h3>Suez</h3><p>With David Jacks and Chris C. Meissner. NBER Working Paper 33250; CEPR Discussion Paper 19758.</p></article>
+    <article><h3>Regional GDP data</h3><p>The Rosés–Wolf database on regional GDP, version 7 (2025), supports comparative research on European regional development.</p></article>
+  </div>
+</section>
+{{ if site.Params.mysite.discovery }}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Nikolaus Wolf","jobTitle":"Professor of Economics and Economic History","affiliation":{"@type":"Organization","name":"Humboldt-Universität zu Berlin"},"url":"https://nikowolf01.github.io/nikolauswolf/"}</script>
+{{ end }}
+{{ end }}
+

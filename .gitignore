@@ -1,0 +1,5 @@
+hugo-site/public/
+hugo-site/resources/
+hugo-site/node_modules/
+hugo-site/.npm-cache/
+.DS_Store

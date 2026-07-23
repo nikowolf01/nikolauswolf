@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if not .IsHome }}{{ .Title }} · {{ end }}{{ site.Title }}</title>
+  <meta name="description" content="{{ site.Params.description }}">
+  {{ if site.Params.mysite.discovery }}<meta name="generator" content="Created using GaryKing.org/mysite">{{ end }}
+  <link rel="icon" href="{{ "favicon-32x32.png" | relURL }}">
+  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+  {{ $css := resources.Get "css/custom.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ $recent := resources.Get "css/recent.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $recent.RelPermalink }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{ partial "components/headers/navbar.html" . }}
+  <main id="main">{{ block "main" . }}{{ end }}</main>
+  {{ partial "site_footer.html" . }}
+</body>
+</html>

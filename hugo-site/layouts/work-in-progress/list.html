@@ -1,0 +1,4 @@
+{{ define "main" }}
+<header class="page-head wrap"><p class="eyebrow">Research</p><h1>{{ .Title }}</h1>{{ with .Content }}<div class="lede">{{ . }}</div>{{ end }}</header>
+<section class="wrap section"><div class="simple-list">{{ range .Pages.ByTitle }}{{ $caption := .Params.figure_caption }}<article class="progress-entry">{{ with .Params.featured_image }}<figure><img src="{{ . | relURL }}" alt=""><figcaption>{{ $caption }}</figcaption></figure>{{ end }}<div><p class="eyebrow">Working paper</p><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2><p>{{ delimit .Params.authors ", " }}. <em>{{ .Params.publication }}</em></p><p>{{ .Summary }}</p></div></article>{{ end }}</div></section>
+{{ end }}

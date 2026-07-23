@@ -1,0 +1,8 @@
+{{ define "main" }}
+<article class="wrap article">
+  <nav class="breadcrumbs"><a href="{{ "" | relURL }}">Home</a> / {{ .Title }}</nav>
+  <h1>{{ .Title }}</h1>
+  <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}
+

@@ -1,0 +1,17 @@
+{{ define "main" }}
+<header class="page-head wrap"><p class="eyebrow">Research</p><h1>Writings</h1><p class="lede">Published articles, books and chapters, working papers, and policy contributions.</p></header>
+<section class="wrap publication-shell">
+  <nav class="pub-tabs" role="tablist">
+    <button class="tab-btn active" data-tab="all">All</button>
+    <button class="tab-btn" data-tab="articles">Articles</button>
+    <button class="tab-btn" data-tab="working-papers">Working papers</button>
+    <button class="tab-btn" data-tab="book">Books & chapters</button>
+    <button class="tab-btn" data-tab="policy">Policy</button>
+  </nav>
+  <aside class="filters"><label>Search<input id="pub-search" type="search" placeholder="Title, author, venue"></label><label>Sort<select id="pub-sort"><option value="new">Newest first</option><option value="old">Oldest first</option><option value="az">Title A–Z</option></select></label><button id="reset" class="cite-button">Reset</button></aside>
+  <div class="pub-results"><div class="result-count" aria-live="polite"></div><div id="pub-list">{{ range .Pages.ByDate.Reverse }}{{ $caption := .Params.figure_caption }}<article class="pub-item{{ if or .Params.featured_image .Params.figure_suggestion }} recent-pub{{ end }}" data-tab="{{ .Params.tab }}" data-year="{{ .Date.Format "2006" }}" data-title="{{ lower .Title }}" data-search="{{ lower (printf "%s %s %s" .Title (delimit .Params.authors " ") .Params.publication) }}">{{ with .Params.featured_image }}<figure><img src="{{ . | relURL }}" alt=""><figcaption>{{ $caption }}</figcaption></figure>{{ else }}{{ with .Params.figure_suggestion }}<div class="suggested-figure"><strong>Suggested figure</strong><span>{{ . }}</span></div>{{ end }}{{ end }}<p><span class="authors">{{ delimit .Params.authors ", " }}</span> ({{ .Date.Format "2006" }}). <a href="{{ .RelPermalink }}">{{ .Title }}</a>. <em>{{ .Params.publication }}</em></p></article>{{ end }}</div></div>
+</section>
+<script>
+(function(){var tabs=[].slice.call(document.querySelectorAll('.tab-btn')),items=[].slice.call(document.querySelectorAll('.pub-item')),q=document.querySelector('#pub-search'),sort=document.querySelector('#pub-sort'),count=document.querySelector('.result-count'),list=document.querySelector('#pub-list'),active='all';function run(){var term=q.value.toLowerCase(),visible=[];items.forEach(function(i){var show=(active==='all'||i.dataset.tab===active)&&(!term||i.dataset.search.indexOf(term)>-1);i.hidden=!show;if(show)visible.push(i);});visible.sort(function(a,b){if(sort.value==='az')return a.dataset.title.localeCompare(b.dataset.title);return (sort.value==='old'?1:-1)*(+a.dataset.year-+b.dataset.year);}).forEach(function(i){list.appendChild(i)});count.textContent=visible.length+' of '+items.length+' results';tabs.forEach(function(b){var on=b.dataset.tab===active;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});history.replaceState(null,'','#'+active)}tabs.forEach(function(b){b.addEventListener('click',function(){active=b.dataset.tab;run()})});q.addEventListener('input',run);sort.addEventListener('change',run);document.querySelector('#reset').addEventListener('click',function(){q.value='';sort.value='new';active='all';run()});var h=location.hash.slice(1);if(tabs.some(function(b){return b.dataset.tab===h}))active=h;run()})();
+</script>
+{{ end }}
