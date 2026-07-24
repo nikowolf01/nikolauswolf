@@ -12,6 +12,12 @@ image_credit: "Figure supplied by the author."
 links:
   - name: "Publisher's Version"
     url: "https://doi.org/10.1162/rest_a_01305"
+  - name: "Paper (PDF)"
+    url: "/nikolauswolf/files/testing-marx-paper.pdf"
+  - name: "Online Appendix (PDF)"
+    url: "/nikolauswolf/files/testing-marx-online-appendix.pdf"
+  - name: "Replication Package (Harvard Dataverse)"
+    url: "https://dataverse.harvard.edu/api/access/datafile/6935789"
 ---
 
 This article connects capital accumulation and income inequality to support for socialism in nineteenth-century Germany.

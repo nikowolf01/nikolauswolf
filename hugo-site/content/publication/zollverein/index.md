@@ -12,6 +12,12 @@ image_credit: "Figure from the open-access Cambridge University Press article (C
 links:
   - name: "Publisher's Version"
     url: "https://doi.org/10.1017/S0022050725101083"
+  - name: "Paper (PDF)"
+    url: "/nikolauswolf/files/how-britain-unified-germany-paper.pdf"
+  - name: "Online Appendix (PDF)"
+    url: "/nikolauswolf/files/how-britain-unified-germany-online-appendix.pdf"
+  - name: "Replication Package (ZIP)"
+    url: "/nikolauswolf/files/how-britain-unified-germany-replication-package.zip"
 ---
 
 The article studies how changing trade routes shaped the formation of the German customs union.

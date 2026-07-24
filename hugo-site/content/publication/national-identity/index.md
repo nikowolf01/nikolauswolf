@@ -12,6 +12,12 @@ image_credit: "Figure supplied by the author."
 links:
   - name: "Publisher's Version"
     url: "https://doi.org/10.1016/j.jce.2024.02.004"
+  - name: "Paper (PDF)"
+    url: "/nikolauswolf/files/on-the-origins-of-national-identity-paper.pdf"
+  - name: "Online Appendix (PDF)"
+    url: "/nikolauswolf/files/on-the-origins-of-national-identity-online-appendix.pdf"
+  - name: "Replication Package (ZIP)"
+    url: "/nikolauswolf/files/on-the-origins-of-national-identity-replication-package.zip"
 ---
 
 The article investigates historical origins of national identity.
