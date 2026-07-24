@@ -1,7 +1,7 @@
 ---
 title: "On the origins of border effects: insights from the Habsburg Empire"
 date: 2008-06-09
-authors: ["Nikolaus Wolf"]
+authors: ["Max-Stephan Schulze", "Nikolaus Wolf"]
 publication: "Journal of Economic Geography"
 publication_types: ["journal_article"]
 tab: "articles"
