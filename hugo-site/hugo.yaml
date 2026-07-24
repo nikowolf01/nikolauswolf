@@ -10,7 +10,7 @@ params:
 menu:
   main:
     - {name: "Bio & C.V.", url: "bio/", weight: 10}
-    - {name: "Writings", url: "publication/", weight: 20}
+    - {name: "Research", url: "publication/", weight: 20}
     - {name: "Work in Progress", url: "work-in-progress/", weight: 30}
     - {name: "Research Areas", url: "#research-areas", weight: 40}
     - {name: "Data", url: "data/", weight: 50}
