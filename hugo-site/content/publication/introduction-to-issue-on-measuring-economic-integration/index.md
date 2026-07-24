@@ -1,7 +1,7 @@
 ---
 title: "Introduction to issue on measuring economic integration"
 date: 2013-01-01
-authors: ["Nitsch, V.", "Wolfy, N."]
+authors: ["Nitsch, V.", "Wolf, N."]
 publication: "CESifo Economic Studies"
 publication_types: ["journal_article"]
 tab: "articles"
