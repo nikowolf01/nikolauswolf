@@ -9,6 +9,9 @@ tags: ["economic history", "national identity"]
 featured_image: "images/figures/national-identity.jpg"
 figure_caption: "National first name: point estimates and confidence intervals, 1810–1821."
 image_credit: "Figure supplied by the author."
+links:
+  - name: "Publisher's Version"
+    url: "https://doi.org/10.1016/j.jce.2024.02.004"
 ---
 
 The article investigates historical origins of national identity.
