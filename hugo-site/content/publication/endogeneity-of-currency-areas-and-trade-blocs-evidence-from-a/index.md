@@ -1,7 +1,7 @@
 ---
 title: "Endogeneity of Currency Areas and Trade Blocs: Evidence from a Natural Experiment"
 date: 2011-05-01
-authors: ["Nikolaus Wolf"]
+authors: ["Nikolaus Wolf", "Albrecht O. Ritschl"]
 publication: "Kyklos"
 publication_types: ["journal_article"]
 tab: "articles"
