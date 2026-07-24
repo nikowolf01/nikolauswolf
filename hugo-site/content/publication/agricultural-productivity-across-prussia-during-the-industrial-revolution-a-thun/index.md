@@ -1,7 +1,7 @@
 ---
 title: "Agricultural Productivity Across Prussia During the Industrial Revolution: A Thünen Perspective"
 date: 2012-08-22
-authors: ["Nikolaus Wolf"]
+authors: ["Michael Kopsidis", "Nikolaus Wolf"]
 publication: "The Journal of Economic History"
 publication_types: ["journal_article"]
 tab: "articles"
