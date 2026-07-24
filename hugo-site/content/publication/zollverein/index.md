@@ -9,6 +9,9 @@ tags: ["international trade", "economic history", "Germany"]
 featured_image: "images/figures/zollverein-map.jpg"
 figure_caption: "Figure 1: German states and major rivers after the Congress of Vienna."
 image_credit: "Figure from the open-access Cambridge University Press article (CC BY 4.0)."
+links:
+  - name: "Publisher's Version"
+    url: "https://doi.org/10.1017/S0022050725101083"
 ---
 
 The article studies how changing trade routes shaped the formation of the German customs union.
