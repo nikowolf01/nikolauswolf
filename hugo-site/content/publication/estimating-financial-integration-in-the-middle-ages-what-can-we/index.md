@@ -1,7 +1,7 @@
 ---
 title: "Estimating Financial Integration in the Middle Ages: What Can We Learn from a TAR Model?"
 date: 2006-03-01
-authors: ["Nikolaus Wolf"]
+authors: ["Oliver Volckart", "Nikolaus Wolf"]
 publication: "The Journal of Economic History"
 publication_types: ["journal_article"]
 tab: "articles"
