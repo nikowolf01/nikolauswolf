@@ -9,6 +9,9 @@ tags: ["international trade", "Germany"]
 featured_image: "images/figures/german-trade.jpg"
 figure_caption: "Figure 3: Germany’s trade by continent."
 image_credit: "Figure from the authors’ repository version of the related German foreign-trade paper."
+links:
+  - name: "Publisher's Version"
+    url: "https://doi.org/10.1515/ger-2024-0059"
 ---
 
 The article presents new evidence on the structure of German foreign trade before 1914.
