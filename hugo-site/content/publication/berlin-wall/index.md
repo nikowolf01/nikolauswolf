@@ -6,6 +6,7 @@ publication: "Econometrica 83(6), 2127–2189"
 publication_types: ["journal_article"]
 tab: "articles"
 tags: ["economic geography", "Berlin", "borders"]
+show_list_links: true
 links:
   - name: "Publisher's Version"
     url: "https://doi.org/10.3982/ECTA10876"
