@@ -13,6 +13,10 @@ weight: -100
 links:
   - name: "Publisher's Version"
     url: "https://doi.org/10.1016/j.euroecorev.2026.105432"
+  - name: "Paper with Appendix (PDF)"
+    url: "/nikolauswolf/files/fickle-fossils-paper-with-appendix.html"
+  - name: "Replication Package (ZIP)"
+    url: "/nikolauswolf/files/fickle-fossils-replication-package.html"
 ---
 
 The paper examines coal, oil, and European economic growth across the twentieth and early twenty-first centuries.

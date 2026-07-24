@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fickle Fossils — Paper with Appendix</title>
+<style>
+body{max-width:680px;margin:12vh auto;padding:0 24px;font:18px/1.55 system-ui,sans-serif;color:#2d2926;background:#fbf8f3}h1{font:2.2rem/1.15 Georgia,serif}button{border:0;border-radius:5px;padding:12px 18px;background:#843b40;color:white;font:inherit;cursor:pointer}progress{width:100%;margin-top:24px}small{color:#655f5a}
+</style>
+<h1>Fickle Fossils</h1>
+<p>Paper with Appendix (PDF, 53 pages)</p>
+<button id="download">Download PDF</button>
+<progress id="progress" value="0" max="7" hidden></progress>
+<p id="status" aria-live="polite"></p>
+<small>SHA-256: 89fed3f6cf2c98a1550ab1d0841a066b3a9ef05b3b0f9830dc0b848887cdb568</small>
+<script>
+async function downloadFile(){
+  const button=document.querySelector('#download'),progress=document.querySelector('#progress'),status=document.querySelector('#status');
+  button.disabled=true;progress.hidden=false;status.textContent='Preparing download…';
+  try{
+    const chunks=[];
+    for(let i=1;i<=7;i++){
+      const name=`fickle-fossils-paper.part${String(i).padStart(3,'0')}`;
+      const response=await fetch(name);
+      if(!response.ok)throw new Error(`Could not load part ${i}`);
+      chunks.push(await response.arrayBuffer());progress.value=i;
+    }
+    const blob=new Blob(chunks,{type:'application/pdf'});
+    const link=document.createElement('a');link.href=URL.createObjectURL(blob);
+    link.download='Fickle Fossils Paper with Appendix.pdf';link.click();
+    setTimeout(()=>URL.revokeObjectURL(link.href),60000);status.textContent='Download ready.';
+  }catch(error){status.textContent=error.message;button.disabled=false}
+}
+document.querySelector('#download').addEventListener('click',downloadFile);
+</script>
+</html>
