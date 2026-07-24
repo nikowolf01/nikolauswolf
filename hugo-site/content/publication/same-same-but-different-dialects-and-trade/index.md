@@ -1,7 +1,7 @@
 ---
 title: "Same Same But Different: Dialects and Trade"
 date: 2015-08-01
-authors: ["Nikolaus Wolf"]
+authors: ["Alfred Lameli", "Jens Südekum", "Volker Nitsch", "Nikolaus Wolf"]
 publication: "German Economic Review"
 publication_types: ["journal_article"]
 tab: "articles"
