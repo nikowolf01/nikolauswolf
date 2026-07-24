@@ -20,4 +20,4 @@ links:
     url: "https://dataverse.harvard.edu/api/access/datafile/6935789"
 ---
 
-This article connects capital accumulation and income inequality to support for socialism in nineteenth-century Germany.
+Based on new panel data for Prussian regions, we reevaluate the famous revisionism debate between orthodox Marxists and their critics.
