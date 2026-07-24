@@ -1,7 +1,7 @@
 ---
 title: "Tear down this wall: on the persistence of borders in trade"
 date: 2013-02-01
-authors: ["Nikolaus Wolf"]
+authors: ["Volker Nitsch", "Nikolaus Wolf"]
 publication: "Canadian Journal of Economics/Revue canadienne d'économique"
 publication_types: ["journal_article"]
 tab: "articles"
