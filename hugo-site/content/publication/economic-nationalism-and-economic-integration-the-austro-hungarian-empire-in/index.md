@@ -1,7 +1,7 @@
 ---
 title: "Economic nationalism and economic integration: the Austro-Hungarian Empire in the late nineteenth century 1"
 date: 2012-05-01
-authors: ["Nikolaus Wolf"]
+authors: ["Max-Stephan Schulze", "Nikolaus Wolf"]
 publication: "The Economic History Review"
 publication_types: ["journal_article"]
 tab: "articles"
