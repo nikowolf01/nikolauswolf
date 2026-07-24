@@ -1,7 +1,7 @@
 ---
 title: "On the Economic Consequences of the Peace: Trade and Borders After Versailles"
 date: 2011-12-01
-authors: ["Nikolaus Wolf"]
+authors: ["Nikolaus Wolf", "Max-Stephan Schulze", "Hans-Christian Heinemeyer"]
 publication: "The Journal of Economic History"
 publication_types: ["journal_article"]
 tab: "articles"
