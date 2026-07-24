@@ -19,4 +19,4 @@ links:
     url: "/nikolauswolf/files/fickle-fossils-replication-package.html"
 ---
 
-The paper examines coal, oil, and European economic growth across the twentieth and early twenty-first centuries.
+We show how cheap oil explains the reversal of fortune for European coal regions.
