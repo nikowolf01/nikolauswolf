@@ -9,6 +9,10 @@ tags: ["economic history", "energy", "economic growth"]
 featured_image: "images/figures/fickle-fossils.jpg"
 figure_caption: "Figure 1: reversal of fortune in European coal regions."
 image_credit: "Figure from the authors’ working-paper version hosted by The Productivity Institute."
+weight: -100
+links:
+  - name: "Publisher's Version"
+    url: "https://doi.org/10.1016/j.euroecorev.2026.105432"
 ---
 
 The paper examines coal, oil, and European economic growth across the twentieth and early twenty-first centuries.
