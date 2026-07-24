@@ -10,6 +10,8 @@ orcid: "https://orcid.org/0000-0002-7461-2910"
 links:
   - name: "Publisher's Version"
     url: "https://doi.org/10.1017/s0022050720000364"
+  - name: "Replication Package (OpenICPSR)"
+    url: "https://www.openicpsr.org/openicpsr/project/119604/version/V1/view"
 ---
 
 Publication metadata imported from Nikolaus Wolf's ORCID record.
