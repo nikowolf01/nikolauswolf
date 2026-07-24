@@ -1,7 +1,7 @@
 ---
 title: "The Location of the UK Cotton Textiles Industry in 1838: A Quantitative Analysis"
 date: 2014-12-01
-authors: ["Nikolaus Wolf"]
+authors: ["Nicholas Crafts", "Nikolaus Wolf"]
 publication: "The Journal of Economic History"
 publication_types: ["journal_article"]
 tab: "articles"
