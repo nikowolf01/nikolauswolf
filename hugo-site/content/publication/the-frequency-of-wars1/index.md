@@ -1,7 +1,7 @@
 ---
 title: "The frequency of wars1"
 date: 2012-08-01
-authors: ["Nikolaus Wolf"]
+authors: ["Mark Harrison", "Nikolaus Wolf"]
 publication: "The Economic History Review"
 publication_types: ["journal_article"]
 tab: "articles"
