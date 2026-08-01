@@ -1,17 +1,154 @@
 {{ define "main" }}
-<header class="page-head wrap"><p class="eyebrow">Research</p><h1>Research</h1><p class="lede">Published articles, books and chapters, working papers, and policy contributions.</p></header>
-<section class="wrap publication-shell">
-  <nav class="pub-tabs" role="tablist">
-    <button class="tab-btn active" data-tab="all">All</button>
-    <button class="tab-btn" data-tab="articles">Articles</button>
-    <button class="tab-btn" data-tab="working-papers">Working papers</button>
-    <button class="tab-btn" data-tab="book">Books & chapters</button>
-    <button class="tab-btn" data-tab="policy">Policy</button>
-  </nav>
-  <aside class="filters"><label>Search<input id="pub-search" type="search" placeholder="Title, author, venue"></label><label>Sort<select id="pub-sort"><option value="new">Newest first</option><option value="old">Oldest first</option><option value="az">Title A–Z</option></select></label><button id="reset" class="cite-button">Reset</button></aside>
-  <div class="pub-results"><div class="result-count" aria-live="polite"></div><div id="pub-list">{{ range .Pages.ByWeight }}{{ $caption := .Params.figure_caption }}<article class="pub-item{{ if or .Params.featured_image .Params.figure_suggestion }} recent-pub{{ end }}" data-tab="{{ .Params.tab }}" data-year="{{ .Date.Format "2006" }}" data-title="{{ lower .Title }}" data-search="{{ lower (printf "%s %s %s" .Title (delimit .Params.authors " ") .Params.publication) }}">{{ with .Params.featured_image }}<figure><img src="{{ . | relURL }}" alt=""><figcaption>{{ $caption }}</figcaption></figure>{{ else }}{{ with .Params.figure_suggestion }}<div class="suggested-figure"><strong>Suggested figure</strong><span>{{ . }}</span></div>{{ end }}{{ end }}<p><span class="authors">{{ delimit .Params.authors ", " }}</span> ({{ .Date.Format "2006" }}). <a href="{{ .RelPermalink }}">{{ .Title }}</a>. <em>{{ .Params.publication }}</em>{{ if .Params.show_list_links }} <span class="inline-links">{{ range .Params.links }} · <a href="{{ .url }}">{{ .name }}</a>{{ end }}</span>{{ end }}</p></article>{{ end }}</div></div>
+<header class="page-head wrap">
+  <p class="eyebrow">Research</p>
+  <h1>Research</h1>
+  <p class="lede">Published articles, books and chapters, working papers, and policy contributions. Publications are shown chronologically by default and can also be explored through four broad research areas.</p>
+</header>
+
+<section class="wrap research-areas" aria-labelledby="research-areas-heading">
+  <h2 id="research-areas-heading">Research areas</h2>
+  <div class="research-area-grid">
+    <article><h3>States, Nations &amp; Political Economy</h3><p>Institutions, state formation, national identity, sovereignty, and the political economy of long-run development.</p></article>
+    <article><h3>Trade, Globalization &amp; Market Integration</h3><p>International trade, globalization, transport, customs unions, borders, and global economic networks.</p></article>
+    <article><h3>Geography, Cities &amp; Economic Development</h3><p>Economic geography, regional development, urbanization, structural change, and long-run growth.</p></article>
+    <article><h3>Europe Between the Wars</h3><p>The Great Depression, interwar integration and fragmentation, financial crises, political extremism, and Europe from 1918 to 1945.</p></article>
+  </div>
 </section>
+
+<section class="wrap publication-shell">
+  <aside class="filters" aria-label="Research controls">
+    <label>Search
+      <input id="pub-search" type="search" placeholder="Title, author, or venue" autocomplete="off">
+    </label>
+    <label>Group by
+      <select id="pub-group">
+        <option value="year">Year</option>
+        <option value="area">Research area</option>
+      </select>
+    </label>
+    <label>Research area
+      <select id="pub-area">
+        <option value="all">All research areas</option>
+        <option value="states">States, Nations &amp; Political Economy</option>
+        <option value="trade">Trade, Globalization &amp; Market Integration</option>
+        <option value="geography">Geography, Cities &amp; Economic Development</option>
+        <option value="interwar">Europe Between the Wars</option>
+      </select>
+    </label>
+    <button id="reset" class="cite-button" type="button">Reset</button>
+  </aside>
+
+  <div class="pub-results">
+    <div class="result-count" aria-live="polite"></div>
+    <div id="pub-list">
+      {{ range .Pages.ByWeight }}
+        {{ $caption := .Params.figure_caption }}
+        <article class="pub-item{{ if or .Params.featured_image .Params.figure_suggestion }} recent-pub{{ end }}"
+          data-year="{{ .Date.Format "2006" }}"
+          data-title="{{ lower .Title }}"
+          data-search="{{ lower (printf "%s %s %s" .Title (delimit .Params.authors " ") .Params.publication) }}">
+          {{ with .Params.featured_image }}
+            <figure><img src="{{ . | relURL }}" alt=""><figcaption>{{ $caption }}</figcaption></figure>
+          {{ else }}
+            {{ with .Params.figure_suggestion }}<div class="suggested-figure"><strong>Suggested figure</strong><span>{{ . }}</span></div>{{ end }}
+          {{ end }}
+          <p><span class="authors">{{ delimit .Params.authors ", " }}</span> ({{ .Date.Format "2006" }}). <a href="{{ .RelPermalink }}">{{ .Title }}</a>. <em>{{ .Params.publication }}</em>{{ if .Params.show_list_links }} <span class="inline-links">{{ range .Params.links }} · <a href="{{ .url }}">{{ .name }}</a>{{ end }}</span>{{ end }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<style>
+.research-areas{margin-bottom:2.5rem}.research-area-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.research-area-grid article{border-top:2px solid currentColor;padding-top:.8rem}.research-area-grid h3{margin:0 0 .35rem;font-size:1.05rem}.research-area-grid p{margin:0}.publication-group{margin:2.25rem 0}.publication-group>h2{margin-bottom:1rem}.publication-group .pub-item{margin-bottom:1rem}.filters{align-items:end}.filters label{min-width:12rem}.group-description{margin:-.5rem 0 1.25rem;max-width:52rem}.empty-results{padding:2rem 0}@media(max-width:760px){.research-area-grid{grid-template-columns:1fr}.filters{display:grid;grid-template-columns:1fr}.filters label{min-width:0}}
+</style>
+
 <script>
-(function(){var tabs=[].slice.call(document.querySelectorAll('.tab-btn')),items=[].slice.call(document.querySelectorAll('.pub-item')),q=document.querySelector('#pub-search'),sort=document.querySelector('#pub-sort'),count=document.querySelector('.result-count'),list=document.querySelector('#pub-list'),active='all';function run(){var term=q.value.toLowerCase(),visible=[];items.forEach(function(i){var show=(active==='all'||i.dataset.tab===active)&&(!term||i.dataset.search.indexOf(term)>-1);i.hidden=!show;if(show)visible.push(i);});visible.sort(function(a,b){if(sort.value==='az')return a.dataset.title.localeCompare(b.dataset.title);return (sort.value==='old'?1:-1)*(+a.dataset.year-+b.dataset.year);}).forEach(function(i){list.appendChild(i)});count.textContent=visible.length+' of '+items.length+' results';tabs.forEach(function(b){var on=b.dataset.tab===active;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});history.replaceState(null,'','#'+active)}tabs.forEach(function(b){b.addEventListener('click',function(){active=b.dataset.tab;run()})});q.addEventListener('input',run);sort.addEventListener('change',run);document.querySelector('#reset').addEventListener('click',function(){q.value='';sort.value='new';active='all';run()});var h=location.hash.slice(1);if(tabs.some(function(b){return b.dataset.tab===h}))active=h;run()})();
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.pub-item')),
+      q=document.querySelector('#pub-search'),
+      group=document.querySelector('#pub-group'),
+      area=document.querySelector('#pub-area'),
+      count=document.querySelector('.result-count'),
+      list=document.querySelector('#pub-list'),
+      reset=document.querySelector('#reset');
+
+  var areas={
+    states:{label:'States, Nations & Political Economy',description:'Institutions, state formation, national identity, sovereignty, and the political economy of long-run development.'},
+    trade:{label:'Trade, Globalization & Market Integration',description:'International trade, globalization, transport, customs unions, borders, and global economic networks.'},
+    geography:{label:'Geography, Cities & Economic Development',description:'Economic geography, regional development, urbanization, structural change, and long-run growth.'},
+    interwar:{label:'Europe Between the Wars',description:'The Great Depression, interwar integration and fragmentation, financial crises, political extremism, and Europe from 1918 to 1945.'}
+  };
+
+  var interwarTerms=['great depression','1929','1930s','1928','1936','interwar','versaille','after versailles','first world war','world war i','gold','poland’s adherence','poland\'s adherence','polish interwar','1918–39','1918-39','1918–1939','1918-1939','undoing 1914','economic consequences of the peace','coordination failure','political trilemma'];
+  var statesTerms=['national identity','nationalism','nation-building','nation building','sovereignty','testing marx','socialism','protestant ethic','unified germany','german unification','zollverein','frequency of wars','war and crisis','krieg und krise','annales','political economy'];
+  var tradeTerms=['trade','globalization','globalisation','integration','customs union','border effects','borders','currency areas','market for patents','suez','tariff','zölle','zahlungsbilanz','balance of payments','panopticon','foreign trade','binnenhandel','außenhandel','wirtschaftskrieg','dialects'];
+
+  function hasAny(title,terms){return terms.some(function(term){return title.indexOf(term)>-1;});}
+  function classify(item){
+    var title=item.dataset.title;
+    if(hasAny(title,interwarTerms)) return 'interwar';
+    if(hasAny(title,statesTerms)) return 'states';
+    if(hasAny(title,tradeTerms)) return 'trade';
+    return 'geography';
+  }
+
+  items.forEach(function(item){item.dataset.area=classify(item);});
+
+  function heading(text,description){
+    var section=document.createElement('section');
+    section.className='publication-group';
+    var h=document.createElement('h2');h.textContent=text;section.appendChild(h);
+    if(description){var p=document.createElement('p');p.className='group-description';p.textContent=description;section.appendChild(p);}
+    return section;
+  }
+
+  function run(){
+    var term=q.value.trim().toLowerCase(), selectedArea=area.value;
+    var visible=items.filter(function(item){
+      return (selectedArea==='all'||item.dataset.area===selectedArea)&&(!term||item.dataset.search.indexOf(term)>-1);
+    });
+    visible.sort(function(a,b){return (+b.dataset.year-+a.dataset.year)||a.dataset.title.localeCompare(b.dataset.title);});
+    list.innerHTML='';
+
+    if(!visible.length){
+      var empty=document.createElement('p');empty.className='empty-results';empty.textContent='No publications match these filters.';list.appendChild(empty);
+    } else if(group.value==='year'){
+      var years=[];
+      visible.forEach(function(item){if(years.indexOf(item.dataset.year)<0)years.push(item.dataset.year);});
+      years.forEach(function(year){
+        var section=heading(year);
+        visible.filter(function(item){return item.dataset.year===year;}).forEach(function(item){section.appendChild(item);});
+        list.appendChild(section);
+      });
+    } else {
+      ['states','trade','geography','interwar'].forEach(function(key){
+        var areaItems=visible.filter(function(item){return item.dataset.area===key;});
+        if(!areaItems.length)return;
+        var section=heading(areas[key].label,areas[key].description), currentYear='';
+        areaItems.forEach(function(item){
+          if(item.dataset.year!==currentYear){currentYear=item.dataset.year;var h=document.createElement('h3');h.textContent=currentYear;section.appendChild(h);}
+          section.appendChild(item);
+        });
+        list.appendChild(section);
+      });
+    }
+    count.textContent=visible.length+' of '+items.length+' publications';
+    var params=new URLSearchParams();
+    if(group.value!=='year')params.set('group',group.value);
+    if(area.value!=='all')params.set('area',area.value);
+    if(term)params.set('q',term);
+    history.replaceState(null,'',location.pathname+(params.toString()?'?'+params.toString():'')+location.hash);
+  }
+
+  [q,group,area].forEach(function(control){control.addEventListener(control===q?'input':'change',run);});
+  reset.addEventListener('click',function(){q.value='';group.value='year';area.value='all';run();q.focus();});
+
+  var params=new URLSearchParams(location.search);
+  if(params.get('group')==='area')group.value='area';
+  if(areas[params.get('area')])area.value=params.get('area');
+  if(params.get('q'))q.value=params.get('q');
+  run();
+})();
 </script>
 {{ end }}
