@@ -42,10 +42,17 @@
     <div class="result-count" aria-live="polite"></div>
     <div id="pub-list">
       {{ range .Pages.ByWeight }}
+        {{ $page := . }}
         {{ $caption := .Params.figure_caption }}
+        {{ $areas := slice }}
+        {{ range $key, $metadata := site.Data.research_areas }}
+          {{ if in $metadata.publications $page.Title }}{{ $areas = $areas | append $key }}{{ end }}
+        {{ end }}
+        {{ if eq (len $areas) 0 }}{{ $areas = $areas | append "geography" }}{{ end }}
         <article class="pub-item{{ if or .Params.featured_image .Params.figure_suggestion }} recent-pub{{ end }}"
           data-year="{{ .Date.Format "2006" }}"
           data-title="{{ lower .Title }}"
+          data-areas="{{ delimit $areas "," }}"
           data-search="{{ lower (printf "%s %s %s" .Title (delimit .Params.authors " ") .Params.publication) }}">
           {{ with .Params.featured_image }}
             <figure><img src="{{ . | relURL }}" alt=""><figcaption>{{ $caption }}</figcaption></figure>
@@ -80,20 +87,7 @@
     interwar:{label:'Europe Between the Wars',description:'The Great Depression, interwar integration and fragmentation, financial crises, political extremism, and Europe from 1918 to 1945.'}
   };
 
-  var interwarTerms=['great depression','1929','1930s','1928','1936','interwar','versaille','after versailles','first world war','world war i','gold','poland’s adherence','poland\'s adherence','polish interwar','1918–39','1918-39','1918–1939','1918-1939','undoing 1914','economic consequences of the peace','coordination failure','political trilemma'];
-  var statesTerms=['national identity','nationalism','nation-building','nation building','sovereignty','testing marx','socialism','protestant ethic','unified germany','german unification','zollverein','frequency of wars','war and crisis','krieg und krise','annales','political economy'];
-  var tradeTerms=['trade','globalization','globalisation','integration','customs union','border effects','borders','currency areas','market for patents','suez','tariff','zölle','zahlungsbilanz','balance of payments','panopticon','foreign trade','binnenhandel','außenhandel','wirtschaftskrieg','dialects'];
-
-  function hasAny(title,terms){return terms.some(function(term){return title.indexOf(term)>-1;});}
-  function classify(item){
-    var title=item.dataset.title;
-    if(hasAny(title,interwarTerms)) return 'interwar';
-    if(hasAny(title,statesTerms)) return 'states';
-    if(hasAny(title,tradeTerms)) return 'trade';
-    return 'geography';
-  }
-
-  items.forEach(function(item){item.dataset.area=classify(item);});
+  items.forEach(function(item){item.areaKeys=item.dataset.areas.split(',').filter(Boolean);});
 
   function heading(text,description){
     var section=document.createElement('section');
@@ -106,7 +100,7 @@
   function run(){
     var term=q.value.trim().toLowerCase(), selectedArea=area.value;
     var visible=items.filter(function(item){
-      return (selectedArea==='all'||item.dataset.area===selectedArea)&&(!term||item.dataset.search.indexOf(term)>-1);
+      return (selectedArea==='all'||item.areaKeys.indexOf(selectedArea)>-1)&&(!term||item.dataset.search.indexOf(term)>-1);
     });
     visible.sort(function(a,b){return (+b.dataset.year-+a.dataset.year)||a.dataset.title.localeCompare(b.dataset.title);});
     list.innerHTML='';
@@ -123,12 +117,13 @@
       });
     } else {
       ['states','trade','geography','interwar'].forEach(function(key){
-        var areaItems=visible.filter(function(item){return item.dataset.area===key;});
+        if(selectedArea!=='all'&&selectedArea!==key)return;
+        var areaItems=visible.filter(function(item){return item.areaKeys.indexOf(key)>-1;});
         if(!areaItems.length)return;
         var section=heading(areas[key].label,areas[key].description), currentYear='';
         areaItems.forEach(function(item){
           if(item.dataset.year!==currentYear){currentYear=item.dataset.year;var h=document.createElement('h3');h.textContent=currentYear;section.appendChild(h);}
-          section.appendChild(item);
+          section.appendChild(item.cloneNode(true));
         });
         list.appendChild(section);
       });
